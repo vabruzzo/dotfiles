@@ -11,6 +11,7 @@ plugins=(git)
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
+# test comment
 
 export PATH=$HOME/bin:/usr/local/bin:$PATH
 export EDITOR="vim"
