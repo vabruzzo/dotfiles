@@ -109,11 +109,16 @@ yawn = lain.widgets.yawn(2461848, {
  -- Define a tag table which will hold all screen tags.
  tags = {
    names  = { "I", "II", "III", "IV", "V"},
-   layout = { layouts[15], layouts[13], layouts[13], layouts[13], layouts[13]} }
- for s = 1, screen.count() do
-     -- Each screen has its own tag table.
-     tags[s] = awful.tag(tags.names, s, tags.layout)
- end
+   layout = { layouts[13], layouts[13], layouts[13], layouts[13], layouts[13]} }
+   -- Each screen has its own tag table.
+   tags[1] = awful.tag(tags.names, 1, tags.layout)
+
+ tags2 = {
+   names2  = { "I", "II", "III"},
+   layout2 = { layouts[15], layouts[13], layouts[13]} }
+   -- Each screen has its own tag table.
+   tags2[2] = awful.tag(tags2.names2, 2, tags2.layout2)
+
  -- }}}
 
 -- {{{ Menu
@@ -455,7 +460,7 @@ awful.rules.rules = {
 	{ rule = {class = "URxvt"},
  		properties = {opacity = 0.9}, callback = function (c)
         if not skipMovingUrxvt then
-          awful.client.movetotag(tags[2][1], c)
+          awful.client.movetotag(tags2[2][1], c)
           skipMovingUrxvt = true
         end
       end
@@ -526,7 +531,7 @@ awful.rules.rules = {
   { rule = { class = "spotify" },
     properties = { }, callback = function (c)
       if not skipMovingSpot then
-        awful.client.movetotag(tags[2][3], c)
+        awful.client.movetotag(tags2[2][3], c)
         skipMovingSpot = true
       end
     end
@@ -548,7 +553,7 @@ awful.rules.rules = {
   { rule = { class = "Vlc" },
     properties = { opacity = 1.0 }, callback = function (c)
       if not skipMovingVLC then
-        awful.client.movetotag(tags[1][4], c)
+        awful.client.movetotag(tags[1][5], c)
         skipMovingVLC = truebot
       end
     end
